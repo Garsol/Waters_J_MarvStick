@@ -43,6 +43,10 @@ header nav ul li {
 }
 
 /* add a down arrow after the last list item */
+header li:last-of-type::after {
+  content: "\25bc";
+padding-left: 5px;
+}
 
 
 header nav ul li:hover { opacity: 0.8; }
@@ -83,7 +87,31 @@ header nav ul li:hover { opacity: 0.8; }
 
 .characters li img { max-width: 100%; }
 
+/*style the checkbox*/
+/*This is an attribute selector -> Pick only the attrubutes that share tpye checkbox*/
+input[type="checkbox"] {
+  margin-right: 20px;
+}
+
+
 /* ::after rules go here */
+
+
+/*checked ityems get a pseudo class of "checked" -> we can select ONLY the checkboxes that have been checked (selcected) and add style(s) to them */
+input[type="checkbox"]:checked + span::after {
+  content: '\2713';
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 50%;
+  background-color: maroon;
+  border: 3px solid red;
+  position: absolute;
+  top: 6px;
+  right: 5px;
+  font-size: 1.4em;
+  animation: fadein 0.5s;
+}
 
 article {
   padding: 20px;
@@ -115,4 +143,11 @@ footer {
 
   height: 80px;
   background-color: rgb(40, 37, 37);
+}
+
+
+/*adding an animation*/
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
